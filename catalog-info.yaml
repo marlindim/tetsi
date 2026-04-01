@@ -1,0 +1,46 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: testcompo
+  description: test
+  annotations:
+    github.com/project-slug: marlindim/tetsi
+    backstage.io/techdocs-ref: dir:.
+    backstage.io/kubernetes-id: testcompo
+    backstage.io/kubernetes-namespace: default
+    prometheus.io/rule: 'up{job="testcompo"}'
+    grafana/dashboard-selector: "tags @> 'testcompo'"
+    grafana/alert-label-selector: "service=testcompo"
+  tags:
+    - nodejs
+    - express
+    - typescript
+    - api
+spec:
+  type: service
+  lifecycle: experimental
+  owner: group:default/devops
+  providesApis:
+    - testcompo-api
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: testcompo-api
+  description: REST API for testcompo
+spec:
+  type: openapi
+  lifecycle: experimental
+  owner: group:default/devops
+  definition: |
+    openapi: 3.0.0
+    info:
+      title: testcompo
+      version: 1.0.0
+    paths:
+      /health:
+        get:
+          summary: Health check
+          responses:
+            '200':
+              description: Service is healthy
