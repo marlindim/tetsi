@@ -6,6 +6,7 @@ metadata:
   annotations:
     github.com/project-slug: marlindim/tetsi
     backstage.io/techdocs-ref: dir:.
+    owasp.org/dependency-check-report: https://marlindim.github.io/tetsi/owasp/dependency-check-report.html
     backstage.io/kubernetes-id: testcompo
     backstage.io/kubernetes-namespace: default
     prometheus.io/rule: 'up{job="testcompo"}'
